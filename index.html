@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Play to the Score: Stage-Guided Dynamic Multi-Sensory Fusion for Robotic Manipulation">
+    <meta name="keywords" content="Multi-Sensory, Robotic Manipulation, Multi-Stage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Play to the Score: Stage-Guided Dynamic Multi-Sensory Fusion for Robotic Manipulation</title>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']], processEscapes: true } });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!-- <link rel="icon" href="./static/images/logo.png"> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://gewu-lab.github.io/">
+                            GeWu Lab@RUC
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Play to the Score: Stage-Guided Dynamic Multi-Sensory
+                            Fusion for Robotic Manipulation</h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=Ma0FKqYAAAAJ&hl=en&oi=ao">Ruoxuan
+                                    Feng</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://dtaoo.github.io/">Di Hu</a><sup>1</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a>Wenke Ma</a><sup>2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=ahUibskAAAAJ&hl=en&oi=ao">Xuelong
+                                    Li</a><sup>3</sup></span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Gaoling School of Artificial Intelligence, Renmin
+                                University of China,</span><br />
+                            <span class="author-block"><sup>2</sup>Shenzhen Taobotics Co., Ltd.</span><br />
+                            <span class="author-block"><sup>3</sup>
+                                Institute of Artificial Intelligence (TeleAI), China Telecom</span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2408.01366"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- <span class="link-block">
+                                    <a href="https://rick-xu315.github.io/ICASSP23_Sup.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Supplementary</span>
+                                    </a>
+                                </span> -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2408.01366"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/GeWu-Lab/MS-Bot_CoRL2024"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <!-- Dataset Link. -->
+                                <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+
+    <!-- <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-steve">
+                        <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-chair-tp">
+                        <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-shiba">
+                        <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/shiba.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-fullbody">
+                        <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/fullbody.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-blueshirt">
+                        <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/blueshirt.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-mask">
+                        <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mask.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-coffee">
+                        <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/coffee.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                    <div class="item item-toby">
+                        <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toby2.mp4"
+                    type="video/mp4">
+          </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Humans possess a remarkable talent for flexibly alternating to different senses when
+                            interacting with the environment.
+                            Picture a chef skillfully gauging the timing of ingredient additions and controlling the
+                            heat according to the colors, sounds, and aromas, seamlessly navigating through every stage
+                            of the complex cooking process.
+                            This ability is founded upon a thorough comprehension of task stages, as achieving the
+                            sub-goal within each stage can necessitate the utilization of different senses. In order to
+                            endow robots with similar ability, we incorporate the task stages divided by sub-goals into
+                            the imitation learning process to accordingly guide dynamic multi-sensory fusion.
+                            We propose MS-Bot, a stage-guided dynamic multi-sensory fusion method with coarse-to-fine
+                            stage understanding, which dynamically adjusts the priority of modalities based on the
+                            fine-grained state within the predicted current stage.
+                            We train a robot system equipped with visual, auditory, and tactile sensors to accomplish
+                            challenging robotic manipulation tasks: pouring and peg insertion with keyway.
+                            Experimental results indicate that our approach enables more effective and explainable
+                            dynamic fusion, aligning more closely with the human fusion process than existing methods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <div class="publication-video">
+                        <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div> -->
+            <!--/ Paper video. -->
+        </div>
+    </section>
+
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Modality Temporality</h2>
+                <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./static/images/method.pdf">
+            </video> -->
+                <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
+                <!-- <embed src="./static/images/all.pdf" type="application/pdf" width="100" height="100"> -->
+                <img src='./static/images/all.png' width="100%" height="100%">
+                <br><br>
+                <h2 class="subtitle has-text-justified">
+                    <b>(a,b)</b> In the end-to-end training of an audio-visual concatenation-based network for
+                    classification, the dominant audio modality rapidly handles the overall model performance and the
+                    joint logit scores, while the visual modality
+                    keeps under-optimized.
+                    <b>(c,d)</b> Further tracking on modality-wise norm of weight vectors indicates the easily-trained
+                    audio encoder tends to have its weight in norm growing much faster than the weak visual modality.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Method</h2>
+                <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./static/images/method.pdf">
+            </video> -->
+                <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
+                <img src='./static/images/pipeline.png' width="100%" height="100%">
+                <br><br>
+                <h2 class="subtitle has-text-justified">
+                    <p> To deal with the above problem, we propose a multi-modal cosine loss, <b>MMCosine</b>. The main
+                        steps are <b>(a)</b> Modality-wise normalization of weight and feature to mitigate the imbalance
+                        and <b>(b)</b>scaling with hyperparameter
+                        $s$ to guarantee the convergence.
+                    </p>
+                    <p>
+                        We also give the lower bound of $s$ given expected posterior probability $p$ of ground-truth
+                        label and the number of total labels $C$. The demonstration can be found in the supplementary
+                        material. $$s\geq \frac{C-1}{2(C+1)}log\frac{(C-1)p}{1-p} $$
+                    </p>
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <h2 class="title is-3 has-text-centered">Results</h2>
+                <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./static/images/method.pdf">
+            </video> -->
+                <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
+                <img src='./static/images/result1.png'>
+                <br><br>
+                <h2 class="subtitle has-text-justified">
+                    $\dagger$ indicates MMCosine is applied. Combined with MMCosine, most of the fusion methods gain
+                    considerable improvement for datasets of various scales, domains, and label amount.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <div class="columns is-centered">
+
+                <!-- Visual Effects. -->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-4">Gap Mitigation</h2>
+
+
+                        <img src="./static/images/result2.png">
+
+                        <p>
+                            The performance gap of uni-modal encoders is reduced by MMCosine, with the weak modality and
+                            the joint model boosted.
+                        </p>
+                    </div>
+                </div>
+                <!--/ Visual Effects. -->
+
+                <!-- Matting. -->
+                <div class="column">
+                    <div class="content">
+                        <h2 class="title is-4">Cosine discriminability</h2>
+
+
+                        <img src="./static/images/result3.png">
+
+                        <p>
+                            The learned angles between uni-modal features and ground-truth class centers become more
+                            compact. MMCosine can lower the intra-class angular variation and maximize the
+                            discriminability of cosine metric.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <section class="section" id="BibTeX">
+                <div class="container is-max-desktop content">
+                    <h2 class="title">BibTeX</h2>
+                    <pre><code>@article{ruize2023mmcosine,
+  author={Ruize, Xu and Ruoxuan, Feng and Shi-xiong, Zhang, and Di, Hu},
+  booktitle={ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  year={2023},
+  organization={IEEE},
+}</code></pre>
+                </div>
+            </section>
+
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="content has-text-centered">
+                        <a class="icon-link" href="https://rick-xu315.github.io/MMCosine.pdf">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                        <a class="icon-link" href="https://rick-xu315.github.io/" class="external-link" disabled>
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <div class="columns is-centered">
+                        <div class="column is-8">
+                            <div class="content">
+
+                                <p>
+                                    Thanks to <a href="https://nerfies.github.io/">Nerfies</a> for providing the
+                                    template of this page.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+</body>
+
+</html>
