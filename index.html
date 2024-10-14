@@ -42,6 +42,38 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* transition: 0.3s; */
+            /* width: 300px; */
+            border-radius: 10px;
+            /* 圆角的大小 */
+            /* margin: 50px; */
+            padding: 7px;
+            background-color: #f1f1f1;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .card2 {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            /* transition: 0.3s; */
+            /* width: 300px; */
+            border-radius: 7px;
+            /* 圆角的大小 */
+            /* margin: 50px; */
+            padding: 5px;
+            background-color: #f1f1f1;
+        }
+
+        .card2:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 
 <body>
@@ -89,7 +121,7 @@
                                 <a href="https://dtaoo.github.io/">Di Hu</a><sup>1</sup>,
                             </span>
                             <span class="author-block">
-                                <a>Wenke Ma</a><sup>2</sup>,</span>
+                                <a href="https://github.com/HANDS-FREE">Wenke Ma</a><sup>2</sup>,</span>
                             <span class="author-block">
                                 <a href="https://scholar.google.com/citations?user=ahUibskAAAAJ&hl=en&oi=ao">Xuelong
                                     Li</a><sup>3</sup></span>
@@ -135,7 +167,7 @@
                                 </span>
                                 <!-- Code Link. -->
                                 <span class="link-block">
-                                    <a href="https://github.com/GeWu-Lab/MS-Bot_CoRL2024"
+                                    <a href="https://github.com/GeWu-Lab/MS-Bot"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-github"></i>
@@ -162,7 +194,18 @@
     </section>
 
 
-
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+          <div class="hero-body" style="padding-bottom: 10px;">
+            <video id="teaser" controls loop height="100%">
+              <source src="./static/videos/video.mp4" type="video/mp4">
+            </video>
+            <h2 class="subtitle has-text-centered">
+              Supplementary video
+            </h2>
+          </div>
+        </div>
+      </section>
 
     <!-- <section class="hero is-light is-small">
         <div class="hero-body">
@@ -275,16 +318,31 @@
             </video> -->
                 <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
                 <!-- <embed src="./static/images/all.pdf" type="application/pdf" width="100" height="100"> -->
-                <img src='./static/images/all.png' width="100%" height="100%">
+                <img src='./static/images/temporality.png' width="100%" height="100%">
                 <br><br>
-                <h2 class="subtitle has-text-justified">
-                    <b>(a,b)</b> In the end-to-end training of an audio-visual concatenation-based network for
-                    classification, the dominant audio modality rapidly handles the overall model performance and the
-                    joint logit scores, while the visual modality
-                    keeps under-optimized.
-                    <b>(c,d)</b> Further tracking on modality-wise norm of weight vectors indicates the easily-trained
-                    audio encoder tends to have its weight in norm growing much faster than the weak visual modality.
-                </h2>
+                <div class="content has-text-justified">
+                    <p>
+                        In a complex manipulation task, the importance of various uni-modal features could change over
+                        stages.
+                        At timesteps from different stages, a particular modality may contribute significantly to the
+                        prediction, or serve as a supplementary role to the primary modality, or provide little useful
+                        information.
+                        Using the pouring task as an example, vision plays a dominant role in the <i>Aligning</i> stage.
+                        Once in the <i>Start Pouring</i> stage, the model begin to use audio and tactile feedback to
+                        determine the appropriate pouring angle.
+                        During the <i>Holding Still</i> stage, the model primarily relies on audio and tactile
+                        deformation
+                        to assess the mass of beads.
+                        In the final <i>End Pouring</i> stage, the model discerns the completion of the pouring mainly
+                        based
+                        on tactile deformation.
+                        Moreover, different states within a stage, such as the beginning and end, may also exhibit minor
+                        changes in modality importance.
+                        We distinguish them as coarse-grained and fine-grained importance change, and summarize this as
+                        a
+                        challenge in multi-sensory imitation learning: <b>Modality Temporality</b>.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -300,18 +358,88 @@
                 <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
                 <img src='./static/images/pipeline.png' width="100%" height="100%">
                 <br><br>
-                <h2 class="subtitle has-text-justified">
-                    <p> To deal with the above problem, we propose a multi-modal cosine loss, <b>MMCosine</b>. The main
-                        steps are <b>(a)</b> Modality-wise normalization of weight and feature to mitigate the imbalance
-                        and <b>(b)</b>scaling with hyperparameter
-                        $s$ to guarantee the convergence.
+                <div class="content has-text-justified">
+                    <p> To deal with the above challenge, we propose <b>MS-Bot</b>, a stage-guided dynamic multi-sensory
+                        fusion method with coarse-to-fine stage understanding.
+                        We first add a stage label \( s_t \) for each sample to form \( (\textbf{X}_t, a_t, s_t) \),
+                        where \( \textbf{X}_t \) is the multi-sensory observation at timestep \( t \) and \( a_t \) is
+                        the action label. We then train the MS-Bot, which consists of four components:
                     </p>
-                    <p>
-                        We also give the lower bound of $s$ given expected posterior probability $p$ of ground-truth
-                        label and the number of total labels $C$. The demonstration can be found in the supplementary
-                        material. $$s\geq \frac{C-1}{2(C+1)}log\frac{(C-1)p}{1-p} $$
-                    </p>
-                </h2>
+                    <ul>
+                        <li><b>Feature Extractor:</b> This component consists of several uni-modal encoders. Each
+                            encoder takes a brief history of observations \( X_t^m \in \mathbb{R}^{T\times H_m \times
+                            W_m
+                            \times C_m} \) of the modality \( m \) as input, where \( T \) is the timestep number of the
+                            brief
+                            history and \( H_m, W_m, C_m \) indicates the input shape of modality \( m \). These
+                            observations
+                            are then encoded into feature tokens \( \mathbf{f}_t \in \mathbb{R}^{M\times T \times d} \)
+                            where \( d \) denotes dimension.</li>
+                        <li><b>State Tokenizer:</b> This component aims to encode the observations and action history \(
+                            (a_1, a_2,...,a_{t-1}) \) into a token that can represent the current state. Action history
+                            is similar to human memory and can help to indicate the current state within the whole task.
+                            We input the action history as a one-hot sequence into an LSTM,
+                            then concatenate the output with the feature tokens and encode them into a state token
+                            \( z^{state}_t \) through a Multi-Layer Perceptron (MLP). </li>
+                        <li><b>Stage Comprehension Module:</b> This module aims to perform coarse-to-grained stage
+                            understanding by injecting stage information into the state token. For a task with $S$
+                            stages, we use \( S \) learnable stage tokens \( [stage_1],...,[stage_S] \) to represent
+                            each stage.
+                            We then use a gate network (MLP) to predict the current stage, then multiply the softmax
+                            score \( \mathbf{g}_t \) with the stage tokens and sum them up to obtain the stage token \(
+                            z^{stage}_t \) at
+                            timestep \( t \):
+                            $$
+                            \begin{equation}
+                            \begin{gathered}
+                            \mathbf{g}_t = (g^{1}_t,...,g^{S}_t) = softmax (MLP (z^{state}_t)),\\
+                            z^{stage}_t = \frac{1}{S} \sum_{j=1}^S(g^{j}_t \cdot [stage_j]).
+                            \end{gathered}
+                            \end{equation}
+                            $$
+                            Finally, we compute the weighted sum of the state token $z^{state}_t$ and the current stage
+                            token $z^{stage}_t$ using a weight $\beta$ to obtain the stage-injected state token
+                            $z^{*}_t$:
+                            \begin{equation}
+                            z^{*}_t = \beta \cdot z^{state}_t + (1-\beta) \cdot z_t^{stage}.
+                            \end{equation}
+                            Different from the old state token $z^{state}_t$, the new state token $z^{*}_t$ represents
+                            the fine-grained state within a stage. In this case, $z^{stage}_t$ is regarded as an anchor
+                            stage, while $z^{state}_t$ can indicate the shift inside the stage, thereby achieving
+                            coarse-to-fine stage comprehension.
+                            During the training process, we utilize stage labels to supervise the stage scores output by
+                            the gate net.
+                            We use a soft penalty loss $\mathcal{L}_{gate}$ to constrain the output of the gate net on
+                            the $i$-th sample:
+                            \begin{equation}
+                            \begin{gathered}
+                            \mathcal{L}_{gate,i} = \sum_{j=1}^S (w_i^j\cdot g_i^j), \ j \in \{ 1,2,...,S \}, \\
+                            w_i^j = \left \{
+                            \begin{array}{ll}
+                            0, & (s_i = j) \ or \ (\exists k,\ |k-i| \leq \gamma,\ s_i \ne s_k)
+                            , \\
+                            1, & otherwise,
+                            \end{array}
+                            \right. \\
+                            \end{gathered}
+                            \end{equation}
+                            where $k$ indicates a nearby sample in the same trajectory, $s_i$ and $s_k$ represent stage
+                            labels and $\gamma$ is a hyper-parameter used to determine the range near the stage
+                            boundaries.
+                        </li>
+                        <li>
+                            <b>Dynamic Fusion Module:</b> We aim for this module to dynamically select the modalities of
+                            interest based on the fine-grained state within the current stage. We use the state token
+                            with stage information $z^{*}_t$ as query, and the feature tokens $\mathbf{f}_t$ as key and
+                            value for cross-attention. The features from all modalities are integrated into a fusion
+                            token $z^{fus}_t$ based on the current stage's requirements. Finally, the fusion token
+                            $z^{fus}_t$ is fed into an MLP to predict the next action $a_t$. We also introduce random
+                            attention blur by replacing the attention scores on feature tokens with the same average
+                            value $\frac{1}{M\times T}$ with a probability $p$ to prevent the model from simply
+                            memorizing the actions corresponding to attention score patterns.
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -319,107 +447,144 @@
     <section class="hero teaser">
         <div class="container is-max-desktop">
             <div class="hero-body">
-                <h2 class="title is-3 has-text-centered">Results</h2>
-                <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-              <source src="./static/images/method.pdf">
-            </video> -->
-                <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
-                <img src='./static/images/result1.png'>
-                <br><br>
-                <h2 class="subtitle has-text-justified">
-                    $\dagger$ indicates MMCosine is applied. Combined with MMCosine, most of the fusion methods gain
-                    considerable improvement for datasets of various scales, domains, and label amount.
-                </h2>
-            </div>
-        </div>
-    </section>
+                <h2 class="title is-3 has-text-centered">Experiments</h2>
+                <div class="content has-text-justified">
+                    <p>We evaluate our method on two challenging robotic manipulation tasks: pouring and peg insertion
+                        with keyway.
+                        We compare our method with three baselines in both tasks:
+                    </p>
+                    <ol>
+                        <li><b>Concat:</b> a model which directly
+                            concatenates all the uni-modal
+                            features. </li>
+                        <li><b>Du et al.:</b> a model that uses LSTM to fuse the uni-modal features and the additional
+                            proprioceptive information. </li>
+                        <li><b>MULSA:</b> a model which fuses the uni-modal features via self-attention. </li>
+                    </ol>
+                    <p>We also compare our method with two variants in each task:
+                    </p>
+                    <ol>
+                        <li><b>MS-Bot (w/o A/D):</b> removing audio in pouring and depth in peg insertion for MS-Bot.
+                        </li>
+                        <li><b>MS-Bot (w/o T/R):</b> removing touch in pouring and RGB in peg insertion for MS-Bot.
+                        </li>
+                    </ol>
 
-    <section class="section">
-        <div class="container is-max-desktop">
-
-            <div class="columns is-centered">
-
-                <!-- Visual Effects. -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-4">Gap Mitigation</h2>
-
-
-                        <img src="./static/images/result2.png">
-
-                        <p>
-                            The performance gap of uni-modal encoders is reduced by MMCosine, with the weak modality and
-                            the joint model boosted.
-                        </p>
-                    </div>
                 </div>
-                <!--/ Visual Effects. -->
-
-                <!-- Matting. -->
-                <div class="column">
-                    <div class="content">
-                        <h2 class="title is-4">Cosine discriminability</h2>
-
-
-                        <img src="./static/images/result3.png">
-
-                        <p>
-                            The learned angles between uni-modal features and ground-truth class centers become more
-                            compact. MMCosine can lower the intra-class angular variation and maximize the
-                            discriminability of cosine metric.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            <section class="section" id="BibTeX">
-                <div class="container is-max-desktop content">
-                    <h2 class="title">BibTeX</h2>
-                    <pre><code>@article{ruize2023mmcosine,
-  author={Ruize, Xu and Ruoxuan, Feng and Shi-xiong, Zhang, and Di, Hu},
-  booktitle={ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
-  year={2023},
-  organization={IEEE},
-}</code></pre>
-                </div>
-            </section>
-
-
-            <footer class="footer">
-                <div class="container">
-                    <div class="content has-text-centered">
-                        <a class="icon-link" href="https://rick-xu315.github.io/MMCosine.pdf">
-                            <i class="fas fa-file-pdf"></i>
-                        </a>
-                        <a class="icon-link" href="https://rick-xu315.github.io/" class="external-link" disabled>
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
+                <h2 class="title is-4">Main Experiments</h2>
+                <div class="container is-max-desktop">
                     <div class="columns is-centered">
-                        <div class="column is-8">
-                            <div class="content">
+                        <div class="column">
+                            <div class="card">
+                                <video poster="" id="pour" autoplay controls muted loop playsinline height="100%" style="margin-bottom: -6.9px;">
+                                    <source src="./static/videos/pour.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
 
-                                <p>
-                                    Thanks to <a href="https://nerfies.github.io/">Nerfies</a> for providing the
-                                    template of this page.
-                                </p>
+                        <div class="column">
+                            <div class="card">
+                                <video poster="" id="peg" autoplay controls muted loop playsinline style="margin-bottom: -6.9px;">
+                                    <source src="./static/videos/peg.mp4" type="video/mp4">
+                                </video>
                             </div>
                         </div>
                     </div>
                 </div>
-            </footer>
+                <!-- <p>The results are shown in Table 1:</p> -->
+                <!-- <br></br> -->
+                <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+              <source src="./static/images/method.pdf">
+            </video> -->
+                <!-- <embed src="./static/images/method.pdf" type="application/pdf"> -->
+                <img src='./static/images/result1.png' style="margin-top: 15px;">
+                <br><br>
+                <!-- <h2 class="subtitle has-text-justified">
+                    $\dagger$ indicates MMCosine is applied. Combined with MMCosine, most of the fusion methods gain
+                    considerable improvement for datasets of various scales, domains, and label amount.
+                </h2> -->
+                <h2 class="title is-4">Visualization</h2>
+                <img src='./static/images/result2.png'>
+                Visualization of the aggregated attention scores for each modality and stage scores in the pouring task.
+                At each timestep, we average the attention scores on all feature tokens of each modality separately. The
+                stage score is the output of the gate network after softmax normalization.
+                <br><br>
+                <h2 class="title is-4">Generalization</h2>
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column">
+                            <div class="card2">
+                                <video poster="" id="pour" autoplay controls muted loop playsinline height="100%" style="margin-bottom: -6.9px;">
+                                    <source src="./static/videos/gen1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
 
+                        <div class="column">
+                            <div class="card2">
+                                <video poster="" id="peg" autoplay controls muted loop playsinline height="100%" style="margin-bottom: -6.9px;">
+                                    <source src="./static/videos/gen2.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+
+                        <div class="column">
+                            <div class="card2">
+                                <video poster="" id="peg" autoplay controls muted loop playsinline height="100%" style="margin-bottom: -6.9px;">
+                                    <source src="./static/videos/gen3.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; margin-bottom: 25px;">
+                    <p>To verify the generalization of our method to distractors, we conduct experiments with visual
+                        distractors in both tasks. In the pouring task, we changed the cylinder's color from white to
+                        red.
+                        For
+                        the peg insertion task, we altered the base color from black to green (''Color''), and placed
+                        clutter
+                        around the base (''Mess'').</p>
+                    <p style="text-align:center"><img src='./static/images/result3.png' width="50%" height="50%"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{feng2024play,
+    title={Play to the Score: Stage-Guided Dynamic Multi-Sensory Fusion for Robotic Manipulation},
+    author={Feng, Ruoxuan and Hu, Di and Ma, Wenke and Li, Xuelong},
+    journal={arXiv preprint arXiv:2408.01366},
+    year={2024}
+}</code></pre>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="https://arxiv.org/pdf/2408.01366">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/GeWu-Lab/MS-Bot" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+
+                        <p>
+                            Thanks to <a href="https://nerfies.github.io/">Nerfies</a> for providing the
+                            template of this page.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
