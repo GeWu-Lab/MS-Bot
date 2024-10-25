@@ -14,7 +14,9 @@ If you have any questions, please open an issue or send an email to [fengruoxuan
 
 ## Modality Temporality
 
-![](assest\temporality.png)
+<div align="center">    
+<img src="assest/temporality.png" width = "90%" />
+</div>
 
 In a complex manipulation task, **the importance of various uni-modal features could change over stages**. At timesteps from different stages, a particular modality may contribute significantly to the prediction, or serve as a supplementary role to the primary modality, or provide little useful information. Moreover, different states within a stage, such as the beginning and end, may also exhibit minor changes in modality importance. We distinguish them as coarse-grained and fine-grained importance change, and summarize this as a challenge in multi-sensory imitation learning: **Modality Temporality**.
 
@@ -27,7 +29,9 @@ To deal with the above challenge, we propose **MS-Bot**, a stage-guided **dynami
 - **Stage Comprehension Module:** This module aims to perform coarse-to-grained stage understanding by injecting stage information into the state token.
 - **Dynamic Fusion Module:** This module aims to dynamically select the modalities of interest based on the fine-grained state within the current stage.
 
-![](assest\pipeline.png)
+<div align="center">    
+<img src="assest/pipeline.png" width = "90%" />
+</div>
 
 ------
 
