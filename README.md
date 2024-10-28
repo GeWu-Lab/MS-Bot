@@ -6,7 +6,7 @@ The official PyTorch implementation for "*Play to the Score: Stage-Guided Dynami
 
 **Accepted by: Conference on Robot Learning (CoRL 2024, Oral Presentation)**
 
-**Resources:[[Project Page](https://gewu-lab.github.io/MS-Bot/)],[[Arxiv](https://arxiv.org/abs/2408.01366)]**
+**Resources:[[Project Page](https://gewu-lab.github.io/MS-Bot/)],[[Arxiv](https://arxiv.org/abs/2408.01366v2)]**
 
 If you have any questions, please open an issue or send an email to [fengruoxuan@ruc.edu.cn](mailto:fengruoxuan@ruc.edu.cn).
 
