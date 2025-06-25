@@ -83,12 +83,10 @@ We use a 6-DoF UFACTORY xArm 6 robot arm for real-world testing. If you are usin
 ## Citation
 
 ```
-@inproceedings{feng2024play,
-    title={Play to the Score: Stage-Guided Dynamic Multi-Sensory Fusion for Robotic Manipulation},
-    author={Feng, Ruoxuan and Hu, Di and Ma, Wenke and Li, Xuelong},
-    booktitle={8th Annual Conference on Robot Learning},
-    year={2024},
-    url={https://openreview.net/forum?id=N5IS6DzBmL}
+@inproceedings{fengplay,
+      title={Play to the Score: Stage-Guided Dynamic Multi-Sensory Fusion for Robotic Manipulation},
+      author={Feng, Ruoxuan and Hu, Di and Ma, Wenke and Li, Xuelong},
+      booktitle={8th Annual Conference on Robot Learning}
 }
 ```
 
